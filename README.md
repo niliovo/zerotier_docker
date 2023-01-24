@@ -88,9 +88,3 @@ docker run -itd --name zerotier --hostname zerotier --net host --restart always 
 - [ztncui-aio](https://github.com/key-networks/ztncui-aio)
 - [ztncui-zh](https://github.com/ly88321/ztncui-zh)
 - [Github文件加速](https://tool.mintimate.cn/gh/)
-
-# 捐赠
-
-![支付宝](./donation/alipay.JPG)
-
-![微信](./donation/wechatpay.JPG)

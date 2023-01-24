@@ -87,10 +87,4 @@ docker run -itd --name zerotier --hostname zerotier --net host --restart always 
 - [docker-zerotier-moon](https://github.com/rwv/docker-zerotier-moon)
 - [ztncui-aio](https://github.com/key-networks/ztncui-aio)
 - [ztncui-zh](https://github.com/ly88321/ztncui-zh)
-- [Github文件加速](https://tool.mintimate.cn/gh/)
-
-# Donation
-
-![支付宝](./donation/alipay.JPG)
-
-![微信](./donation/wechatpay.JPG)
+- [Github file acceleration](https://tool.mintimate.cn/gh/)
