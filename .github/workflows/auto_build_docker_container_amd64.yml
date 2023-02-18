@@ -1,4 +1,4 @@
-name: 自动构建docker镜像
+name: 自动构建docker镜像AMD64
 
 on:
   schedule:
