@@ -8,19 +8,23 @@ WORKDIR /zerotier
 
 COPY --from=oztn /usr/local/bin/argon2g /usr/local/bin/
 
-COPY zerotier_build.sh zerotier_build.sh
+COPY --from=oztn /opt/key-networks/ztncui/etc /opt/key-networks/ztncui/etc 
 
-COPY zerotier_startup.sh zerotier_startup.sh
+COPY --from=oztn /opt/key-networks/ztncui/node_modules /opt/key-networks/ztncui/node_modules
+
+COPY zerotier_build_eng.sh zerotier_build_eng.sh
+
+COPY zerotier_startup_eng.sh zerotier_startup_eng.sh
 
 COPY health_check.sh health_check.sh
 
-RUN chmod 777 zerotier_build.sh zerotier_startup.sh health_check.sh
+RUN chmod 777 zerotier_build_eng.sh zerotier_startup_eng.sh health_check.sh
 
-RUN ["/bin/bash", "-c", "./zerotier_build.sh"]
+RUN ["/bin/bash", "-c", "./zerotier_build_eng.sh"]
 
 EXPOSE 9993 9993/udp 9994 9995
 
 HEALTHCHECK --interval=30s --timeout=10s \
   CMD ["/bin/bash", "./health_check.sh"]
 
-ENTRYPOINT ["/bin/bash", "./zerotier_startup.sh"]
+ENTRYPOINT ["/bin/bash", "./zerotier_startup_eng.sh"]
