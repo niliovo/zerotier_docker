@@ -8,9 +8,7 @@ WORKDIR /zerotier
 
 COPY --from=oztn /usr/local/bin/argon2g /usr/local/bin/
 
-COPY --from=oztn /opt/key-networks/ztncui/etc /opt/key-networks/ztncui/etc 
-
-COPY --from=oztn /opt/key-networks/ztncui/node_modules /opt/key-networks/ztncui/node_modules
+COPY --from=oztn /opt/key-networks /opt/key-networks
 
 COPY zerotier_build_eng.sh zerotier_build_eng.sh
 
