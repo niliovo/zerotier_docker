@@ -88,3 +88,4 @@ docker run -itd --name zerotier --hostname zerotier --net host --restart always 
 - [ztncui-aio](https://github.com/key-networks/ztncui-aio)
 - [ztncui-zh](https://github.com/ly88321/ztncui-zh)
 - [Github file acceleration](https://tool.mintimate.cn/gh/)
+- [USTC open source software mirror](https://mirrors.ustc.edu.cn/)
