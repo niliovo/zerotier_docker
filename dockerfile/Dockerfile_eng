@@ -12,11 +12,11 @@ COPY health_check.sh health_check.sh
 
 RUN chmod 777 zerotier_build_eng.sh zerotier_startup_eng.sh health_check.sh
 
-RUN ["/bin/bash", "-c", "zerotier_build_eng.sh"]
+RUN ["/bin/bash", "-c", "./zerotier_build_eng.sh"]
 
 EXPOSE 9993 9993/udp 9994 9995
 
 HEALTHCHECK --interval=30s --timeout=10s \
   CMD ["/bin/bash", "./health_check.sh"]
 
-ENTRYPOINT ["/bin/bash", "zerotier_startup_eng.sh"]
+ENTRYPOINT ["/bin/bash", "./zerotier_startup_eng.sh"]
