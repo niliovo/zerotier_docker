@@ -17,7 +17,8 @@ apt-get install gosu apt-utils libssl1.1 procps sudo ca-certificates gnupg curl 
 
 #curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
 
-curl -s 'https://gh.flyinbug.top/gh/https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
+#curl -s 'https://gh.flyinbug.top/gh/https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
+curl -s https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
 
 #curl -s https://install.zerotier.com | sudo bash
 
