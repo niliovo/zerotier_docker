@@ -2,36 +2,48 @@
 
 m_d=/zerotier
 
-echo "deb http://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
-deb http://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
-deb http://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
-deb http://mirrors.ustc.edu.cn/debian-security/ bullseye-security main non-free contrib 
-deb-src http://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/debian-security/ bullseye-security main non-free contrib" > /etc/apt/sources.list
+echo "deb http://mirrors.ustc.edu.cn/debian bookworm main contrib non-free non-free-firmware
+deb-src http://mirrors.ustc.edu.cn/debian bookworm main contrib non-free non-free-firmware
+deb http://mirrors.ustc.edu.cn/debian bookworm-updates main contrib non-free non-free-firmware
+deb-src http://mirrors.ustc.edu.cn/debian bookworm-updates main contrib non-free non-free-firmware
+deb http://mirrors.ustc.edu.cn/debian bookworm-proposed-updates main contrib non-free non-free-firmware
+deb-src http://mirrors.ustc.edu.cn/debian bookworm-proposed-updates main contrib non-free non-free-firmware
+deb http://mirrors.ustc.edu.cn/debian-security bookworm-security main contrib
+deb http://mirrors.ustc.edu.cn/debian-security bookworm-security main contrib" > /etc/apt/sources.list
 
-apt-get update -qq
+echo "Types: deb
+URIs: http://mirrors.ustc.edu.cn/debian
+Suites: bookworm bookworm-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-apt-get install gosu apt-utils libssl1.1 procps sudo ca-certificates gnupg curl wget -y
+Types: deb
+URIs: http://mirrors.ustc.edu.cn/debian-security
+Suites: bookworm-security
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg" > /etc/apt/sources.list.d/debian.sources
 
-#curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
+apt-get update
 
-#curl -s 'https://gh.flyinbug.top/gh/https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
-curl -s https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
+apt-get install gosu apt-utils libssl3 procps sudo ca-certificates gnupg curl wget -y
+
+#wget 'https://githubusercontent.niliovo.top/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
+
+wget 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
 
 #curl -s https://install.zerotier.com | sudo bash
 
 curl https://install.zerotier.com/ | sed 's,download.zerotier.com/,mirrors.sustech.edu.cn/zerotier/,g' | sudo bash
 
-v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/ly88321/ztncui-zh/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
-)
+#v=$(wget -qO- -t1 -T2 "https://githubapi.niliovo.top/repos/ly88321/ztncui-zh/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
+
+v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/ly88321/ztncui-zh/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
 
 z_v=$v\_amd64.deb
 
-#curl -C - -O https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
+#curl -O https://githubdl.niliovo.top/https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
-curl -C - -O https://gh.flyinbug.top/gh/https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
+curl -O https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
 dpkg -x $z_v $m_d/tmp
 

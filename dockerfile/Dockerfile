@@ -1,24 +1,18 @@
 FROM keynetworks/ztncui:latest AS oztn
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 MAINTAINER niliovo 1791356563@qq.com
 
-ENV m_dir="/zerotier"
-
-WORKDIR $m_dir
+WORKDIR /zerotier
 
 COPY --from=oztn /usr/local/bin/argon2g /usr/local/bin/
 
-COPY zerotier_build.sh $m_dir
+COPY ./* .
 
-COPY zerotier_startup.sh $m_dir
+RUN chmod 777 zerotier_build.sh zerotier_startup.sh health_check.sh /usr/local/bin/argon2g
 
-COPY health_check.sh $m_dir
-
-RUN chmod 777 $m_dir/zerotier_build.sh $m_dir/zerotier_startup.sh $m_dir/health_check.sh
-
-RUN ["/bin/bash", "zerotier_build.sh"]
+RUN bash zerotier_build.sh
 
 EXPOSE 9993 9993/udp 9994 9995
 

@@ -76,7 +76,7 @@ while [ ! -f /var/lib/zerotier-one/authtoken.secret ]; do
     echo "Zerotier 的身份验证令牌没找到... 等待zerotier启动"
     sleep 2
 done
-chown zerotier-one.zerotier-one /var/lib/zerotier-one/authtoken.secret
+chown zerotier-one:zerotier-one /var/lib/zerotier-one/authtoken.secret
 chmod 640 /var/lib/zerotier-one/authtoken.secret
 
 cd $ztncui_dir
