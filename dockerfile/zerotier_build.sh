@@ -43,7 +43,7 @@ z_v=$v\_amd64.deb
 
 #curl -O https://githubdl.niliovo.top/https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
-curl -O https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
+wget https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
 dpkg -x $z_v $m_d/tmp
 
