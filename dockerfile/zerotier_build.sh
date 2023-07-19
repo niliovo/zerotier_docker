@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 m_d=/zerotier
 
@@ -27,7 +27,6 @@ apt-get update
 
 apt-get install gosu apt-utils libssl3 procps sudo ca-certificates gnupg curl wget -y
 
-#wget 'https://githubusercontent.niliovo.top/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
 
 wget 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import
 
@@ -35,13 +34,9 @@ wget 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%
 
 curl https://install.zerotier.com/ | sed 's,download.zerotier.com/,mirrors.sustech.edu.cn/zerotier/,g' | sudo bash
 
-#v=$(wget -qO- -t1 -T2 "https://githubapi.niliovo.top/repos/ly88321/ztncui-zh/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
-
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/ly88321/ztncui-zh/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
 
 z_v=$v\_amd64.deb
-
-#curl -O https://githubdl.niliovo.top/https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
 wget https://github.com/ly88321/ztncui-zh/releases/download/$v/$z_v
 
